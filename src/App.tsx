@@ -1,9 +1,10 @@
-import React, {FC} from 'react';
-import './App.css';
 
-const App: FC = () => {
+import './App.css';
+import Products from "./components/Products/Products";
+const App = () => {
   return (
     <div className="App">
+<Products/>
     </div>
   );
 }
