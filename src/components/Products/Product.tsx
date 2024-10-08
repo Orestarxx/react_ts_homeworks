@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
 import {IProduct} from "../../interfaces/productInterface";
-
 const Product:FC<IProduct> = ({id,title,description}) => {
     return (
         <div>
