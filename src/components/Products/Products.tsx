@@ -5,7 +5,11 @@ import Product from "./Product";
 const Products:FC = () => {
     return (
         <div>
-            {products.map(({title,description,id}:IProduct) =><Product  title={title} description={description} id={id} key={id}/>)}
+            {products.map(({title,description,id}:IProduct) =><Product key={id}
+                                                                       title={title}
+                                                                       description={description}
+                                                                       id={id} />)}
+
         </div>
     );
 };
