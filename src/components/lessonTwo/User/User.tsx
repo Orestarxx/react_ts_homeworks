@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {IUser} from "../../interfaces/IUser";
+import {IUser} from "../../../interfaces/IUser";
 import './userStyle.css';
 type IUserProps = {
     user:IUser,

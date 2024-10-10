@@ -1,9 +1,9 @@
 import React, {FC, useEffect, useState} from 'react';
-import {IUser} from "../../interfaces/IUser";
-import {IPost} from "../../interfaces/IPost"
-import {getPostsOfUsers, getUsers} from "../../services/user.service";
-import User from "../User/User";
-import Post from "../Post/Post";
+import {IUser} from "../../../interfaces/IUser";
+import {IPost} from "../../../interfaces/IPost"
+import {getPostsOfUsers, getUsers} from "../../../services/user.service";
+import User from "../../lessonTwo/User/User";
+import Post from "../../lessonTwo/Post/Post";
 import './usersStyle.css';
 
 const Users:FC = () => {

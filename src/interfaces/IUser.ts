@@ -61,8 +61,6 @@ interface ICompany  {
     title: string;
     address:IAddress;
 }
-
-
 export interface IDataUser {
     limit:number;
     skip:number;

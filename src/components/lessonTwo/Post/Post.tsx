@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {IPost} from "../../interfaces/IPost";
+import {IPost} from "../../../interfaces/IPost";
 type IPostProps = {
     post:IPost;
 }
