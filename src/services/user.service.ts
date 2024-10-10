@@ -1,5 +1,6 @@
 import axios, {AxiosInstance, AxiosResponse} from "axios";
-import {IDataPost, IDataUser, IPost, IUser} from "../interfaces/IUser";
+import { IDataUser, IUser} from "../interfaces/IUser";
+import {IDataPost,IPost} from "../interfaces/IPost"
 
 const axiosInstance:AxiosInstance = axios.create(
     {
@@ -17,5 +18,3 @@ export  const getPostsOfUsers = async (userId:number):Promise<IPost[]>=>{
     console.log(postsOfUser);
     return postsOfUser.data.posts;
 }
-
-getPostsOfUsers(2)

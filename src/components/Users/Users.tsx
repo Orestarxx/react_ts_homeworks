@@ -1,8 +1,10 @@
 import React, {FC, useEffect, useState} from 'react';
-import {IPost, IUser} from "../../interfaces/IUser";
-import {getPostsOfUsers, getUsers} from "../../service/user.service";
+import {IUser} from "../../interfaces/IUser";
+import {IPost} from "../../interfaces/IPost"
+import {getPostsOfUsers, getUsers} from "../../services/user.service";
 import User from "../User/User";
-import Post from "../Post";
+import Post from "../Post/Post";
+import './usersStyle.css';
 
 const Users:FC = () => {
     const [users,setUsers] =  useState<IUser[]>([]);
@@ -12,13 +14,12 @@ const Users:FC = () => {
      getPostsOfUsers(userId).then((response:IPost[]) =>{setPosts(response)})
 
     }
-    console.log(posts);
 
     return (
         <div>
-            <div>{users.map((user:IUser) => <User key={user.id} user={user} getIdOfUser={getIdOfUser} />)}</div>
+            <div className={'users'}>{users.map((user:IUser) => <User key={user.id} user={user} getIdOfUser={getIdOfUser} />)}</div>
             <hr/>
-            <div>{posts.map((post:IPost)=><Post post={post}/>)}</div>
+            <div>{posts.map((post:IPost)=><Post post={post} key={post.id}/>)}</div>
         </div>
     );
 };
