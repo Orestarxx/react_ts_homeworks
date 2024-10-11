@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {IRickAndMorty} from "../../interfaces/IRickAndMorty";
+import {IRickAndMorty} from "../../../interfaces/IRickAndMorty";
 type RickAndMortyProps = {
     character:IRickAndMorty
 }

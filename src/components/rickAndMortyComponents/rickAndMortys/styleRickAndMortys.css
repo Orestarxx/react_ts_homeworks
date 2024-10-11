@@ -1,0 +1,16 @@
+#characterHolder{
+    width: 100%;
+}
+
+#buttonHolder{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+#buttonHolder>button:first-child,
+#buttonHolder>button:last-child{
+    width: 100px;
+    height: 40px;
+}
