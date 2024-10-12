@@ -5,7 +5,7 @@ import RickAndMorty from "../rickAndMorty/RickAndMorty";
 import './styleRickAndMortys.css';
 const RickAndMortys = () => {
     let [characters,setCharacters] = useState<IRickAndMorty[]>([]);
-    let [pageRick,setPage] = useState(1);
+    let [pageRick,setPage] = useState<number>(1);
     let [totalPages,setTotalPages] = useState<IInfo|null>(null);
     useEffect(() =>{
         rickAndMortyService.getCharacters(pageRick).then((response:IRickAndMorty[]) =>{setCharacters(response)});
@@ -15,29 +15,31 @@ const RickAndMortys = () => {
     },[pageRick]);
     console.log(totalPages);
     let buttons = document.getElementsByClassName('paginationButton') as HTMLCollection;
-    let buttonNext = buttons[1] as HTMLButtonElement;
-    let buttonPrevious = buttons[0] as HTMLButtonElement;
-    console.log(characters);
-    if(totalPages?.pages === pageRick){
-        buttonNext.disabled = true;
+    console.log(buttons);
+    const buttonLogic = (buttonsCollection:HTMLCollection) =>{
+        const buttonNext = buttonsCollection[1] as HTMLButtonElement;
+        const buttonPrevious = buttonsCollection[0] as HTMLButtonElement;
+        console.log(buttonNext,buttonPrevious)
+        if(totalPages?.pages === pageRick && buttonPrevious){
+            buttonNext.disabled = true;
+        }
+        if(pageRick !== 1 && buttonNext){
+            buttonPrevious.disabled = false;
+        }
+        if(totalPages?.pages !== pageRick && buttonNext){
+            buttonNext.disabled = false;
+        }
+        if(pageRick === 1 && buttonPrevious){
+            buttonPrevious.disabled = true;
+        }
     }
-    if(pageRick !== 1){
-        buttonPrevious.disabled = false;
-    }
-    if(totalPages?.pages !== pageRick){
-        buttonNext.disabled = false;
-    }
-    if(pageRick === 1){
-        buttonPrevious.disabled = true
-    }
+    buttonLogic(buttons)
     const next = ()=>{
             ++pageRick;
-        console.log(pageRick);
         setPage(pageRick)
     }
     const previous = ()=>{
        --pageRick;
-        console.log(pageRick);
         setPage(pageRick)
     }
 
