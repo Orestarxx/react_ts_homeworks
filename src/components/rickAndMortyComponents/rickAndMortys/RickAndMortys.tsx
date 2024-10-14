@@ -3,6 +3,7 @@ import {rickAndMortyService} from "../../../services/rickAndMorty.service";
 import {IInfo, IRickAndMorty} from "../../../interfaces/IRickAndMorty";
 import RickAndMorty from "../rickAndMorty/RickAndMorty";
 import './styleRickAndMortys.css';
+import '../rickAndMorty/styleRickAndMorty.css';
 const RickAndMortys = () => {
     let [characters,setCharacters] = useState<IRickAndMorty[]>([]);
     let [pageRick,setPage] = useState<number>(1);
@@ -16,7 +17,7 @@ const RickAndMortys = () => {
     console.log(totalPages);
     let buttons = document.getElementsByClassName('paginationButton') as HTMLCollection;
     console.log(buttons);
-    const buttonLogic = (buttonsCollection:HTMLCollection) =>{
+    const buttonLogic = (buttonsCollection:HTMLCollection):void =>{
         const buttonNext = buttonsCollection[1] as HTMLButtonElement;
         const buttonPrevious = buttonsCollection[0] as HTMLButtonElement;
         console.log(buttonNext,buttonPrevious)

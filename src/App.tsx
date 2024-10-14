@@ -7,9 +7,9 @@ import RickAndMortys from "./components/rickAndMortyComponents/rickAndMortys/Ric
 const App: FC = () => {
   return (
     <div className="App">
-      {/*<Users/>*/}
-      {/*  <hr/>*/}
-      {/*  <UsersPlaceHolder/>*/}
+      <Users/>
+        <hr/>
+        <UsersPlaceHolder/>
       <hr/>
       <RickAndMortys/>
     </div>

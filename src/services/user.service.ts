@@ -9,12 +9,12 @@ const axiosInstance:AxiosInstance = axios.create(
     }
 );
 export const getUsers = async ():Promise<IUser[]> =>{
-    let users:AxiosResponse<IDataUser> = await axiosInstance.get<IDataUser>('/users');
-    console.log(users.data);
-    return users.data.users;
+    return (await axiosInstance.get<IDataUser>('/users')).data.users;
 };
 export  const getPostsOfUsers = async (userId:number):Promise<IPost[]>=>{
-    let postsOfUser = await axiosInstance.get<IDataPost>(`/users/${userId}/posts`);
-    console.log(postsOfUser);
-    return postsOfUser.data.posts;
+    return  (await axiosInstance.get<IDataPost>(`/users/${userId}/posts`)).data.posts;
+}
+export const userService = {
+    getUsers: async ():Promise<IUser[]> =>{return (await axiosInstance.get<IDataUser>('/users')).data.users},
+    getPostsOfUsers: async (userId:number):Promise<IPost[]> =>{return (await axiosInstance.get<IDataPost>(`/users/${userId}/posts`)).data.posts}
 }
