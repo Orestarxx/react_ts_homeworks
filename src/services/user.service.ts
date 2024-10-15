@@ -1,4 +1,4 @@
-import axios, {AxiosInstance, AxiosResponse} from "axios";
+import axios, {AxiosInstance} from "axios";
 import { IDataUser, IUser} from "../interfaces/IUser";
 import {IDataPost,IPost} from "../interfaces/IPost"
 
@@ -8,6 +8,10 @@ const axiosInstance:AxiosInstance = axios.create(
         headers:{"content-type":"application/json"}
     }
 );
+axiosInstance.interceptors.request.use((x) =>{
+    console.log(x);
+    return x;
+})
 export const getUsers = async ():Promise<IUser[]> =>{
     return (await axiosInstance.get<IDataUser>('/users')).data.users;
 };

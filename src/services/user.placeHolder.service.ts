@@ -5,6 +5,7 @@ import {IPostPlaceHolder} from "../interfaces/IPostPlaceHolder";
 const axiosInstanceUsersPlaceHolder = axios.create({
     baseURL:'https://jsonplaceholder.typicode.com'
 });
+
 export  const usersPostsJsonPlaceHolderService = {
     getUsers: async (): Promise<IUserPlaceHolder[]> => {
          return ( await axiosInstanceUsersPlaceHolder.get<IUserPlaceHolder[]>('/users')).data;
