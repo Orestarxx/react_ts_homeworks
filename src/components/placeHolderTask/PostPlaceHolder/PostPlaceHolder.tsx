@@ -2,10 +2,13 @@ import React, {FC} from 'react';
 import {IPostPlaceHolder} from "../../../interfaces/IPostPlaceHolder";
 type PostProps = {
     post:IPostPlaceHolder;
+    getPostId: (postId:number)=>void;
 }
-const PostPlaceHolder:FC<PostProps> = ({post:{id,userId,title,body}}) => {
+const PostPlaceHolder:FC<PostProps> = ({post:{id,userId,title,body},getPostId}) => {
     return (
-        <div>
+        <div onClick={() =>{
+            getPostId(id)
+        }}>
             <div>{id}</div>
             <div>{userId}</div>
             <div>{title}</div>
