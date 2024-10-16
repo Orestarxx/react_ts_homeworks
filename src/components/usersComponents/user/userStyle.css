@@ -1,0 +1,9 @@
+.user{
+    width: 200px;
+    height: 70px;
+    border: 1px solid blue;
+}
+.linkUser{
+    text-decoration: none;
+    color: black;
+}
