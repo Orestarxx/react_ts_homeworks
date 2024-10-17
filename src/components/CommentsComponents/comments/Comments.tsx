@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {IComment} from "../../../models/IComment";
 import {commentService} from "../../../services/jsonPlaceHolder.service";
 import Comment from "../comment/Comment";
 
-const Comments = () => {
+const Comments:FC = () => {
     const [comments,setComments] =  useState<IComment[]>([]);
     useEffect(() =>{
         commentService.getComments().then((comment:IComment[]) =>{setComments(comment)})

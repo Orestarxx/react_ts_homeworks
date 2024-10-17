@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Link} from "react-router-dom";
 import './navigationStyle.css';
 
-const Navigation = () => {
+const Navigation:FC = () => {
     return (
         <nav id={'navigation'}>
             <ul>
