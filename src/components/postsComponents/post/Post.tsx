@@ -9,7 +9,7 @@ type IPostProps = {
 }
 const Post:FC<IPostProps> = ({post}) => {
     return (
-       <Link to={post.id.toString()}>
+       <Link state={post} to={post.id.toString()}>
            <div className={'post'}>
                <div>
                    <b>{post.id}.{post.title}</b>

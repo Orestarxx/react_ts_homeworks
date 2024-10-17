@@ -1,0 +1,10 @@
+.infoPost{
+    width: 96vw;
+    height: 200px;
+    border: 1px solid;
+    margin: 0 2vw 0 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
