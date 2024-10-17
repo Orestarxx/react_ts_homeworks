@@ -1,0 +1,10 @@
+#usersHolder{
+    width: 90vw;
+    margin: 0 5vw 0 5vw;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}

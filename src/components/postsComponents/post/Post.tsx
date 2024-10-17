@@ -1,10 +1,22 @@
-import React from 'react';
+import React, {FC} from 'react';
+import {IPost} from "../../../models/IPost";
+import '../postOfUser/userPost.css'
+import {Link} from "react-router-dom";
+import './postStyle.css'
 
-const Post = () => {
+type IPostProps = {
+    post:IPost
+}
+const Post:FC<IPostProps> = ({post}) => {
     return (
-        <div>
-
-        </div>
+       <Link to={post.id.toString()}>
+           <div className={'post'}>
+               <div>
+                   <b>{post.id}.{post.title}</b>
+               </div>
+               <div>{post.body}</div>
+           </div>
+       </Link>
     );
 };
 

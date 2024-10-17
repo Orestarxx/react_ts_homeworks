@@ -1,8 +1,8 @@
-.userPost{
+.comment{
     width: 96vw;
     margin: 10px 2vw 0 2vw;
     border: 1px solid;
-    height: 60px;
+    height: 80px;
     display: flex;
     justify-content: center;
     flex-direction: column;

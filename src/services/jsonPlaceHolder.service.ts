@@ -16,6 +16,8 @@ const postService = {
         return (await axiosInstance.get<IPost[]>(`/posts?userId=${userId}`)).data}
 }
 const commentService = {
-    getComments : async ():Promise<IComment[]> =>{return (await axiosInstance.get<IComment[]>('/comments')).data}
+    getComments : async ():Promise<IComment[]> =>{return (await axiosInstance.get<IComment[]>('/comments')).data},
+    getCommentsOfPost: async (postId:string):Promise<IComment[]> =>{
+        return (await axiosInstance.get<IComment[]>(`/posts/${postId}/comments`)).data}
 }
 export {userService,commentService,postService};

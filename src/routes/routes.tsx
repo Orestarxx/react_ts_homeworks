@@ -5,6 +5,7 @@ import Comments from "../components/CommentsComponents/comments/Comments";
 import Posts from "../components/postsComponents/posts/Posts";
 import HomePage from "../components/homePage/HomePage";
 import UserDetails from "../components/usersComponents/userDetails/UserDetails";
+import CommentsOfPost from "../components/CommentsComponents/commentsOfPost/CommentsOfPost";
 
 export const routes = createBrowserRouter([
     {path:'/', element:<MainLayOut/>,children:[
@@ -12,6 +13,7 @@ export const routes = createBrowserRouter([
             {path:'users', element:<Users/>},
             {path:'users/:id',element:<UserDetails/>},
             {path:'comments', element:<Comments/>},
-            {path:'posts', element:<Posts/>}
+            {path:'posts', element:<Posts/>},
+            {path:'posts/:id',element:<CommentsOfPost/>}
         ]}
 ]);

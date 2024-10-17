@@ -4,12 +4,11 @@ import {IUser} from "../../../models/IUser";
 import './userDetails.css';
 import {postService} from "../../../services/jsonPlaceHolder.service";
 import {IPost} from "../../../models/IPost";
-import PostOfUser from "../postOfUser/PostOfUser";
+import PostOfUser from "../../postsComponents/postOfUser/PostOfUser";
 
 
 const UserDetails = () => {
    const {state} =  useLocation();
-    console.log(state);
     const {id,username,email,website,phone,name,
         address:{street,suite,city,zipcode,
             geo:{lng,lat}},
@@ -18,12 +17,33 @@ const UserDetails = () => {
     useEffect(():void =>{
        postService.getPostsOfUser(id).then((response:IPost[]) =>{setUsersPosts(response)})
     },[id])
-
-    console.log(userPosts);
     return (
         <div className={'userInfoWrap'}>
             <div className={'userInfo'}>
-                <h3>{name}</h3>
+               <div>
+                   <h3>{name}</h3>
+                   <div>{username}</div>
+                   <div>{email}</div>
+                   <div>{website}</div>
+                   <div>{phone}</div>
+               </div>
+                <div>
+                    <h3>Address</h3>
+                    <div>{street}</div>
+                    <div>{city}</div>
+                    <div>{suite}</div>
+                    <div>{zipcode}</div>
+                    <h3>GEO</h3>
+                    <div>{lng}</div>
+                    <div>{lat}</div>
+                </div>
+
+               <div>
+                   <h3>Company</h3>
+                   <div>{bs}</div>
+                   <div>{catchPhrase}</div>
+                   <div>{companyName}</div>
+               </div>
             </div>
             <div>{userPosts.map((post:IPost) =><PostOfUser key={post.id} post={post}/>)}</div>
         </div>

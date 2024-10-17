@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {IComment} from "../../../models/IComment";
+import {commentService} from "../../../services/jsonPlaceHolder.service";
+import Comment from "../comment/Comment";
 
 const Comments = () => {
+    const [comments,setComments] =  useState<IComment[]>([]);
+    useEffect(() =>{
+        commentService.getComments().then((comment:IComment[]) =>{setComments(comment)})
+    },[]);
     return (
         <div>
-            Comments
+            {comments.map((comment:IComment) =><Comment key={comment.id} comment={comment}/>)}
         </div>
     );
 };

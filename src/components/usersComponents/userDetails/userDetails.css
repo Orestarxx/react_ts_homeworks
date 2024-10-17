@@ -3,6 +3,7 @@
     height: 50vh;
     border: 1px solid;
     margin: 0 2vw 0 2vw;
-    display: flex;
+ display: flex;
     justify-content: center;
+    gap: 10px;
 }

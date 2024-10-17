@@ -1,0 +1,24 @@
+.post{
+    width: 96vw;
+    margin: 10px 2vw 0 2vw;
+    border: 1px solid;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 5px;
+    border-radius: 5px;
+}
+.post:disabled {
+    pointer-events: none;
+}
+
+.post:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+.post:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
