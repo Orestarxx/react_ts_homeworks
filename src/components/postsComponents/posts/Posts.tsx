@@ -6,21 +6,23 @@ import PaginationComponent from "../../paginationComponent/PaginationComponent";
 import {useSearchParams} from "react-router-dom";
 
 const Posts = () => {
-    const [posts,setPosts] =useState<IPost[]>([]);
-    const [query,setQuery] =  useSearchParams({skip:'1'});
+    const [posts, setPosts] = useState<IPost[]>([]);
+    const [query] = useSearchParams({page: '1'});
 
-    useEffect(() =>{
-        const page = query.get('skip');
+    useEffect(() => {
+        const page = query.get('page');
         console.log(page);
-        if(page){
-        placeHolderService.postsService.getPosts(+page).then((response:IDataPost & {posts:IPost[]}) =>setPosts(response.posts))
+        if (page) {
+            placeHolderService.postsService.getPosts(+page).then((response: IDataPost & {
+                posts: IPost[]
+            }) => setPosts(response.posts))
         }
 
-    },[query]);
+    }, [query]);
 
     return (
         <div>
-            {posts.map((post:IPost) =><Post post={post} key={post.id}/>)}
+            {posts.map((post: IPost) => <Post post={post} key={post.id}/>)}
             <PaginationComponent/>
         </div>
     );

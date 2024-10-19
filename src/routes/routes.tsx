@@ -4,6 +4,6 @@ import Posts from "../components/postsComponents/posts/Posts";
 
 export const routes = createBrowserRouter([
     {path:'/',element:<MainLayOut/>,children:[
-        {index:true, element:<Posts/>}
+        {path:'posts', element:<Posts/>}
         ]}
 ])
