@@ -1,0 +1,10 @@
+.post{
+    display: flex;
+    margin: 10px 0 0 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+     width: 700px;
+}
+.post>div:last-child{
+    color: blueviolet;
+}

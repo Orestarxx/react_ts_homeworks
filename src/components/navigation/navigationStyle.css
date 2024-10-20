@@ -1,0 +1,15 @@
+#navigation{
+    width: 40vw;
+    margin: 0 30vw 0 30vw;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navigationLink{
+    text-decoration: none;
+    color: black;
+}
+.navigationLink:hover{
+    border-bottom: 5px solid black;
+}

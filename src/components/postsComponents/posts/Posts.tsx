@@ -4,6 +4,7 @@ import {IDataPost,IPost} from "../../../models/IPost";
 import Post from "../post/Post";
 import PaginationComponent from "../../paginationComponent/PaginationComponent";
 import {useSearchParams} from "react-router-dom";
+import './postsStyle.css'
 
 const Posts = () => {
     const [posts, setPosts] = useState<IPost[]>([]);
@@ -21,7 +22,7 @@ const Posts = () => {
     }, [query]);
 
     return (
-        <div>
+        <div id={'usersHolder'}>
             {posts.map((post: IPost) => <Post post={post} key={post.id}/>)}
             <PaginationComponent/>
         </div>
