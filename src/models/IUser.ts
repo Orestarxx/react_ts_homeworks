@@ -20,4 +20,6 @@ export interface IDataDummy{
     limit:number;
     skip:number;
     total:number;
+	next:boolean;
+	prev:boolean;
 }

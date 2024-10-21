@@ -1,7 +1,11 @@
 import {useSearchParams} from "react-router-dom";
-import {FC, useEffect, useState} from "react";
+import { useEffect, useState} from "react";
 import {placeHolderService} from "../../services/api.jsonPlaceHolder.service";
 import {IDataPost, IPost} from "../../models/IPost";
+import dummyService from "../../services/api.dummyJSON.service";
+import {IDataDummy, IUser} from "../../models/IUser";
+import {IProduct} from "../../models/IProduct";
+import './paginationStyle.css'
 
 
 const PaginationComponent = () => {
@@ -14,15 +18,23 @@ const PaginationComponent = () => {
     useEffect(() => {
         const page = query.get('page');
         if (page) {
-            placeHolderService.postsService.getPosts(+page).then((response: IDataPost & { posts: IPost[] }) => {
-                setFlag({nextFlag: response.next, prevFlag: response.prev})
+            if (window.location.href.includes('posts')) {
+                placeHolderService.postsService.getPosts(+page).then((response: IDataPost & { posts: IPost[] }) => {
+                    setFlag({nextFlag: response.next, prevFlag: response.prev})
+                });
+            } else if (window.location.href.includes('users')) {
+                dummyService.users.getAllUsers(+page).then((response: IDataDummy & { users: IUser[] }) => {
+                    setFlag({nextFlag: response.next, prevFlag: response.prev})
+                })
+            } else if (window.location.href.includes('products')) {
+                dummyService.products.getAllProducts(+page).then((response: IDataDummy & { products: IProduct[] }) => {
+                    setFlag({nextFlag: response.next, prevFlag: response.prev})
+                })
+            }
 
-            });
         }
 
     }, [query]);
-    console.log(flag);
-
     const next = () => {
         let page = query.get('page');
         if (page) {
@@ -40,10 +52,23 @@ const PaginationComponent = () => {
         }
     }
     return (
-        <div>
-            <button onClick={prev} disabled={flag.prevFlag}>prev</button>
-            <button onClick={next} disabled={flag.nextFlag}>next</button>
+        <div className="button-container">
+            <button className="button-3d" onClick={prev} disabled={flag.prevFlag}>
+                <div className="button-top">
+                    <span className="material-icons">❮</span>
+                </div>
+                <div className="button-bottom"></div>
+                <div className="button-base"></div>
+            </button>
+            <button className="button-3d" onClick={next} disabled={flag.nextFlag}>
+                <div className="button-top">
+                    <span className="material-icons">❯</span>
+                </div>
+                <div className="button-bottom"></div>
+                <div className="button-base"></div>
+            </button>
         </div>
+
     );
 };
 

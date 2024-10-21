@@ -19,7 +19,7 @@ export const placeHolderService = {
 
             let dataPosts: IDataPost & { posts: IPost[] } = {
                 skip: skip,
-                limit: 0,
+                limit: limit,
                 total: data.length,
                 posts: [],
                 next: false,
@@ -32,13 +32,12 @@ export const placeHolderService = {
             for (let i = limit; i < skip; i++) {
                 dataPosts.posts.push(data[i])
             }
-            if(dataPosts.posts.length){
-                let lastId = dataPosts.posts[dataPosts.posts.length-1].id
+            if (dataPosts.posts.length) {
+                let lastId = dataPosts.posts[dataPosts.posts?.length - 1]?.id
                 dataPosts.next = lastId === dataPosts.total ? true : false;
-                dataPosts.prev = page > 1? false : true;
+                dataPosts.prev = page > 1 ? false : true;
             }
 
-            console.log(dataPosts.total);
             return dataPosts
 
         }
