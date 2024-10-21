@@ -21,17 +21,19 @@ const Posts = () => {
         const page = query.get('page');
         console.log(page);
         if (page) {
-            placeHolderService.postsService.getPosts(+page).then((response: IDataPost & {
-                posts: IPost[]
-            }) => setPosts(response))
+            placeHolderService.postsService.getPosts(+page).then((response: IDataPost & { posts: IPost[] }) =>{
+                setPosts(response)
+            } )
         }
 
-    }, [query]);
+
+
+    },[query]);
 
     return (
         <div id={'usersHolder'}>
             {posts.posts.map((post: IPost) => <Post post={post} key={post.id}/>)}
-            <PaginationComponent posts={posts}/>
+            <PaginationComponent data={{next:posts.next,prev:posts.prev}}/>
         </div>
     );
 };

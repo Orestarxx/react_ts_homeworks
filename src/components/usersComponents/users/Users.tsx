@@ -7,6 +7,7 @@ import PaginationComponent from "../../paginationComponent/PaginationComponent";
 import './usersStyle.css';
 
 const Users = () => {
+
     const [users, setUsers] = useState<IDataDummy & {users:IUser[]}>({
         skip:0,
         total:0,
@@ -21,13 +22,14 @@ const Users = () => {
         if (page)
             dummyService.users.getAllUsers(+page).then((response: IDataDummy & { users: IUser[] }) => {
                 setUsers(response)
+
             })
     }, [query]);
     return (
         <div>
             <div id={'usersHolder'}> {users.users.map((user: IUser) => <User key={user.id} user={user}/>)}</div>
             <hr/>
-            <PaginationComponent users={users}/>
+            <PaginationComponent data={{next:users.next,prev:users.prev}}/>
         </div>
     );
 };

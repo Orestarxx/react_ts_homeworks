@@ -8,6 +8,7 @@ import {useSearchParams} from "react-router-dom";
 import './productsStyle.css'
 
 const Products = () => {
+
     const [products, setProducts] = useState<IDataDummy & {products:IProduct[]}>({
         skip:0,
         total:0,
@@ -20,8 +21,10 @@ const Products = () => {
     useEffect(() => {
         const page = query.get('page');
         if (page) {
+            console.log(page);
             dummyService.products.getAllProducts(+page).then((response: IDataDummy & { products: IProduct[] }) => {
-                setProducts(response)
+                setProducts(response);
+
             })
         }
     }, [query]);
@@ -29,7 +32,7 @@ const Products = () => {
         <div id={'infoProductsHolder'}>
             <div>{products.products.map((product: IProduct) => <Product key={product.id} product={product}/>)}</div>
             <hr/>
-            <PaginationComponent products={products}/>
+            <PaginationComponent data={{next:products.next,prev:products.prev}}/>
         </div>
     );
 };
