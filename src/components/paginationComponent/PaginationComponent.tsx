@@ -1,15 +1,20 @@
 import {useSearchParams} from "react-router-dom";
-import { useEffect, useState} from "react";
+import {FC, useEffect, useState} from "react";
 import {placeHolderService} from "../../services/api.jsonPlaceHolder.service";
 import {IDataPost, IPost} from "../../models/IPost";
 import dummyService from "../../services/api.dummyJSON.service";
 import {IDataDummy, IUser} from "../../models/IUser";
 import {IProduct} from "../../models/IProduct";
 import './paginationStyle.css'
+type PaginationProps = {
+    posts:IDataPost & {posts:IPost[]}
+    users:IDataDummy & {users:IUser[]}
+    products:IDataDummy & {products:IProduct[]}
+}
 
-
-const PaginationComponent = () => {
+const PaginationComponent:FC<PaginationProps> = ({posts,products,users}) => {
     const [query, setQuery] = useSearchParams({page: '1'});
+    console.log(posts);
 
     const [flag, setFlag] = useState<{ nextFlag: boolean, prevFlag: boolean }>({
         nextFlag: false,
@@ -53,14 +58,14 @@ const PaginationComponent = () => {
     }
     return (
         <div className="button-container">
-            <button className="button-3d" onClick={prev} disabled={flag.prevFlag}>
+            <button className="button-3d" onClick={prev} disabled={posts.prev}>
                 <div className="button-top">
                     <span className="material-icons">❮</span>
                 </div>
                 <div className="button-bottom"></div>
                 <div className="button-base"></div>
             </button>
-            <button className="button-3d" onClick={next} disabled={flag.nextFlag}>
+            <button className="button-3d" onClick={next} disabled={posts.next}>
                 <div className="button-top">
                     <span className="material-icons">❯</span>
                 </div>

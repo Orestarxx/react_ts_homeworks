@@ -7,7 +7,14 @@ import {useSearchParams} from "react-router-dom";
 import './postsStyle.css'
 
 const Posts = () => {
-    const [posts, setPosts] = useState<IPost[]>([]);
+    const [posts, setPosts] = useState<IDataPost & {posts:IPost[]}>({
+        limit:0,
+        skip:0,
+        total:0,
+        posts:[],
+        next:false,
+        prev:false
+    });
     const [query] = useSearchParams({page: '1'});
 
     useEffect(() => {
@@ -16,15 +23,15 @@ const Posts = () => {
         if (page) {
             placeHolderService.postsService.getPosts(+page).then((response: IDataPost & {
                 posts: IPost[]
-            }) => setPosts(response.posts))
+            }) => setPosts(response))
         }
 
     }, [query]);
 
     return (
         <div id={'usersHolder'}>
-            {posts.map((post: IPost) => <Post post={post} key={post.id}/>)}
-            <PaginationComponent/>
+            {posts.posts.map((post: IPost) => <Post post={post} key={post.id}/>)}
+            <PaginationComponent posts={posts}/>
         </div>
     );
 };

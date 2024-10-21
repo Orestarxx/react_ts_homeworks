@@ -8,21 +8,28 @@ import {useSearchParams} from "react-router-dom";
 import './productsStyle.css'
 
 const Products = () => {
-    const [products, setProducts] = useState<IProduct[]>([]);
+    const [products, setProducts] = useState<IDataDummy & {products:IProduct[]}>({
+        skip:0,
+        total:0,
+        limit:0,
+        products:[],
+        next:false,
+        prev:false
+    });
     const [query] = useSearchParams({page: '1'})
     useEffect(() => {
         const page = query.get('page');
         if (page) {
             dummyService.products.getAllProducts(+page).then((response: IDataDummy & { products: IProduct[] }) => {
-                setProducts(response.products)
+                setProducts(response)
             })
         }
     }, [query]);
     return (
         <div id={'infoProductsHolder'}>
-            <div>{products.map((product: IProduct) => <Product key={product.id} product={product}/>)}</div>
+            <div>{products.products.map((product: IProduct) => <Product key={product.id} product={product}/>)}</div>
             <hr/>
-            <PaginationComponent/>
+            <PaginationComponent products={products}/>
         </div>
     );
 };
