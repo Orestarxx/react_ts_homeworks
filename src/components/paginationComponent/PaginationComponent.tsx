@@ -16,7 +16,7 @@ const PaginationComponent = () => {
         prevFlag: false
     });
     useEffect(() => {
-        const page = query.get('page');
+        let page = query.get('page');
         if (page) {
             if (window.location.href.includes('posts')) {
                 placeHolderService.postsService.getPosts(+page).then((response: IDataPost & { posts: IPost[] }) => {
