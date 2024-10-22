@@ -1,0 +1,20 @@
+#wrap{
+    width: 94vw;
+    margin: 0 3vw 0 3vw;
+    height: 100vh;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#userForm{
+    width: 42vw;
+    margin: 0 21vw 0 21vw;
+    height: 50vh;
+}
+.inputHolderDiv{
+    width: 100%;
+}
+.inputHolderDiv>input{
+    width: 100%;
+}

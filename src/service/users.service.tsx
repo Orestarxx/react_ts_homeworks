@@ -11,14 +11,10 @@ const axiosInstance = axios.create({
 export const userService = {
     users:{
         createUser: async (user:IUser) =>{
-            console.log(user);
             await  axiosInstance.post('/users',{
                 method:'POST',
                 body: JSON.stringify(user)
             })
-        },
-        getAllUsers: async ():Promise<IUser[]> =>{
-             return (await axiosInstance.get<IUser[]>('/users')).data
         }
     }
 }
