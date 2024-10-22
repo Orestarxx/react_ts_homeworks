@@ -17,6 +17,7 @@ const Posts = () => {
     });
     const [query] = useSearchParams({page: '1'});
 
+
     useEffect(() => {
         const page = query.get('page');
         console.log(page);

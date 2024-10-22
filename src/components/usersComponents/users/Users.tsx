@@ -27,7 +27,7 @@ const Users = () => {
     }, [query]);
     return (
         <div>
-            <div id={'usersHolder'}> {users.users.map((user: IUser) => <User key={user.id} user={user}/>)}</div>
+            <div id={'usersHolder'}> {users.users.map((user: IUser,index:number) => <User key={index} user={user}/>)}</div>
             <hr/>
             <PaginationComponent data={{next:users.next,prev:users.prev}}/>
         </div>

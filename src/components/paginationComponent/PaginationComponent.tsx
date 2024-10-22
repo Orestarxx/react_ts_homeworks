@@ -7,19 +7,22 @@ type PaginProps = {
 }
 const PaginationComponent:FC<PaginProps> = ({data}) => {
     const [query, setQuery] = useSearchParams({page: '1'});
+
     const next = () => {
         let page = query.get('page');
         if (page) {
             let pageConverted = +page;
-            ++pageConverted;
+            pageConverted++;
             setQuery({page: pageConverted.toString()})
+        }else{
+            setQuery({page:'2'})
         }
     }
     const prev = () => {
         let page = query.get('page');
         if (page) {
             let pageConverted = +page;
-            --pageConverted;
+            pageConverted--;
             setQuery({page: pageConverted.toString()})
         }
     }
