@@ -17,6 +17,7 @@ const UserForm = () => {
     } = useForm<IUser>({mode:'all',resolver:joiResolver(userValidator)});
  const userHandler = async (user:IUser) =>{
     await userService.users.createUser(user)
+     console.log(user);
  }
     return (
        <div id={'wrap'}>

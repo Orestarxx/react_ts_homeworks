@@ -1,20 +1,33 @@
 #wrap{
     width: 94vw;
     margin: 0 3vw 0 3vw;
-    height: 100vh;
-    border: 1px solid;
+    height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 #userForm{
-    width: 42vw;
-    margin: 0 21vw 0 21vw;
-    height: 50vh;
+    width: 46vw;
+    margin: 0 27vw 0 27vw;
+    height: 65vh;
+    border: 1px solid;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    background-color: grey;
 }
 .inputHolderDiv{
-    width: 100%;
+    width: 90%;
 }
 .inputHolderDiv>input{
     width: 100%;
+    height: 30px;
+}
+#userForm>button{
+    width: 70%;
+    height: 25px;
+    background-color: white;
 }
