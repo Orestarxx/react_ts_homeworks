@@ -2,11 +2,23 @@ import React from "react";
 
 import './secondUserStyle.css';
 import {useForm} from "react-hook-form";
+import {joiResolver} from "@hookform/resolvers/joi";
+import {secondUserValidator} from "../../validators/secondUser.joi.validator";
+import {ISecondUser} from "../../models/ISecondUser";
+import {userService} from "../../service/users.service";
 
 export const SecondUserForm = () => {
-    const {handleSubmit,register} = useForm()
-    const userHandler = async (user:{}) =>{
+    const {
+        handleSubmit,
+        register ,
+        formState:{
+            isValid,
+            errors
+        }} = useForm<ISecondUser>(
+        {mode:'all',resolver:joiResolver(secondUserValidator)});
+    const userHandler = async (user:ISecondUser):Promise<void> =>{
         console.log(user);
+        await userService.users.createSecondUser(user)
     }
     return (
 
@@ -15,14 +27,15 @@ export const SecondUserForm = () => {
                    <p className="title">Register new user</p>
                    <p className="message">Signup now and get full access to our app. </p>
                    <div className="flex">
+                           {errors.name && <span>{errors.name.message}</span>}
                        <label>
-                           <input className="input" type="text" placeholder="firstName" {...register('firstname')} />
-                           <span>Firstname</span>
+                           <input className="input" type="text" placeholder="name" {...register('name')} />
+                           <span>Name</span>
                        </label>
 
                        <label>
-                           <input className="input" type="text" placeholder="lastName" {...register('Lastname')}/>
-                           <span>Lastname</span>
+                           <input className="input" type="text" placeholder="username" {...register('username')}/>
+                           <span>User name</span>
                        </label>
                    </div>
 
@@ -32,14 +45,14 @@ export const SecondUserForm = () => {
                    </label>
 
                    <label>
-                       <input className="input" type="password" placeholder="password" {...register('password')}/>
-                       <span>Password</span>
+                       <input className="input" type="text" placeholder="phone number" {...register('phone')}/>
+                       <span>Phone number</span>
                    </label>
                    <label>
-                       <input className="input" type="password" placeholder="confirm password" {...register('confirm')}/>
-                       <span>Confirm password</span>
+                       <input className="input" type="text" placeholder="your website" {...register('website')}/>
+                       <span>website</span>
                    </label>
-                   <button className="submit">Submit</button>
+                   <button className="submit" disabled={!isValid}>Submit</button>
                    <p className="signin">Already have an account ? <a href="#">Sign</a> </p>
                </form>
 
