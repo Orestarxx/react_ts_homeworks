@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FC} from "react";
 
 import './secondUserStyle.css';
 import {useForm} from "react-hook-form";
@@ -7,7 +7,7 @@ import {secondUserValidator} from "../../validators/secondUser.joi.validator";
 import {ISecondUser} from "../../models/ISecondUser";
 import {userService} from "../../service/users.service";
 
-export const SecondUserForm = () => {
+export const SecondUserForm:FC = () => {
     const {
         handleSubmit,
         register ,
