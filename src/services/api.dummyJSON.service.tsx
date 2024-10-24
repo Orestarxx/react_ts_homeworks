@@ -2,8 +2,7 @@ import axios from "axios";
 import {IDataDummy, IUser} from "../models/IUser";
 import {IProduct} from "../models/IProduct";
 
-
-export const axiosInstance = axios.create({
+ const axiosInstance = axios.create({
     baseURL:'https://dummyjson.com',
     headers:{'Content-Type':'application/json'}
 });
