@@ -11,7 +11,7 @@ export const cardResolver =Joi.object({
         .min(100)
         .max(999),
     monthAndYear:Joi.number()
-        .min(1000)
+        .min(1001)
         .max(9999)
 
 
