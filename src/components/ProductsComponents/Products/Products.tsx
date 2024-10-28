@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {dummyService} from "../../../services/api.dummy.service";
-import {IData} from "../../../models/IDataDummy";
+import {refresh} from "../../../services/api.dummy.service"
+import {IData, ITokenPair} from "../../../models/IDataDummy";
 import {IProduct} from "../../../models/IProduct";
 import Product from "../Product/Product";
 
@@ -11,6 +12,8 @@ const Products = () => {
             .then((response:IData & {products:IProduct[]}) =>setProducts(response))
             .catch(reason =>{
                 console.log(reason);
+                refresh().then((response:ITokenPair) =>
+                    dummyService.get.getAllProducts().then((response:IData & {products:IProduct[]})=>setProducts(response)))
             })
     }, []);
     console.log(products);

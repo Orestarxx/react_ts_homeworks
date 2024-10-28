@@ -20,7 +20,7 @@ axiosInstance.interceptors.request.use((request) =>{
 export const dummyService = {
     auth:{
         login: async (user:ILogin):Promise<IUser> =>{
-            let userLogin:ILogin = {...user,expiresInMins:5};
+            let userLogin:ILogin = {...user,expiresInMins:1};
               const {data:userWithTokens} =  await axiosInstance.post<IUser>('/login',userLogin);
             console.log(userWithTokens);
             localStorage.setItem('user',JSON.stringify(userWithTokens))
@@ -34,7 +34,7 @@ export const dummyService = {
         }
     }
 }
-const refresh = async () =>{
+export const refresh = async ():Promise<ITokenPair> =>{
     let userWithToken = getFromLocalStorage<IUser>('user');
     const {data} =  await axiosInstance.post<ITokenPair>('/refresh',{
         refreshToken:  userWithToken.refreshToken,
@@ -43,5 +43,5 @@ const refresh = async () =>{
     userWithToken.accessToken = data.accessToken;
     userWithToken.refreshToken = data.refreshToken;
     localStorage.setItem('user',JSON.stringify(userWithToken));
-
+    return data
 }
