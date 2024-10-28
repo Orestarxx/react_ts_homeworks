@@ -7,15 +7,19 @@ import Product from "../Product/Product";
 
 const Products = () => {
     const [products, setProducts] = useState<IData & {products:IProduct[]} | null>(null);
+    const [trigger,setTrigger] = useState<ITokenPair | null>(null);
     useEffect(() => {
         dummyService.get.getAllProducts()
             .then((response:IData & {products:IProduct[]}) =>setProducts(response))
             .catch(reason =>{
                 console.log(reason);
                 refresh().then((response:ITokenPair) =>
-                    dummyService.get.getAllProducts().then((response:IData & {products:IProduct[]})=>setProducts(response)))
+                {
+                    console.log(response)
+                    setTrigger(response)})
             })
-    }, []);
+    }, [trigger]);
+    console.log(trigger);
     console.log(products);
     return (
         <div>
