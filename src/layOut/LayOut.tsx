@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Outlet} from "react-router-dom";
 import Navigation from "../components/navigation/Navigation";
 
 const LayOut = () => {
+    const [logo, setLogo] = useState<string>('');
+    const getLogo = (logo:string) =>{
+        setLogo(logo)
+    }
     return (
         <div>
-            <Navigation/>
+            <Navigation logo={logo}/>
             <hr/>
-            <Outlet/>
+            <Outlet context={getLogo}/>
         </div>
     );
 };

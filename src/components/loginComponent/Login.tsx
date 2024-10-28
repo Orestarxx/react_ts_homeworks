@@ -2,13 +2,22 @@ import React from 'react';
 import {useForm} from "react-hook-form";
 import './LoginStyle.css';
 import {ILogin} from "../../models/IDataDummy";
-import {dummyService} from "../../services/api.dummy.service";
+import {dummyService, refresh} from "../../services/api.dummy.service";
+import {IUser} from "../../models/IUser";
+import {useOutletContext} from "react-router-dom";
+
 
 const Login = () => {
+    const getLogo = useOutletContext<(logo:string) =>void>()
     const {handleSubmit,register} =  useForm<ILogin>()
     const userLogination = async (user:ILogin) =>{
         console.log(user);
         await dummyService.auth.login(user)
+            .then((response:IUser) =>{getLogo(response.image)})
+            .catch(reason =>{
+                console.log(reason)
+                refresh()
+            })
     }
     return (
         <div className="form-container">

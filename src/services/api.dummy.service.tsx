@@ -3,6 +3,7 @@ import {IData, ILogin, ITokenPair} from "../models/IDataDummy";
 import {IUser} from "../models/IUser";
 import {getFromLocalStorage} from "../helpers/helpers";
 import {IProduct} from "../models/IProduct";
+import {log} from "node:util";
 
 
 const axiosInstance = axios.create({
@@ -29,7 +30,7 @@ export const dummyService = {
     },
     get:{
         getAllProducts: async ():Promise<IData & {products:IProduct[]}> =>{
-            const {data} = await axiosInstance.get<IData & {products:IProduct[]}>('products');
+            const {data} = await axiosInstance.get<IData & {products:IProduct[]}>('products')
             return data
         }
     }
