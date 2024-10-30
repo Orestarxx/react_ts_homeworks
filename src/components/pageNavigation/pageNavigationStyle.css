@@ -1,0 +1,17 @@
+#navigation{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 98vw;
+    margin: 0 1vw 0 1vw;
+    height: 40px;
+    gap: 20px;
+}
+#navigation>a{
+    text-decoration: none;
+    color: black;
+}
+#navigation>a:hover{
+    color: blue;
+    border-bottom: black 2px solid;
+}
