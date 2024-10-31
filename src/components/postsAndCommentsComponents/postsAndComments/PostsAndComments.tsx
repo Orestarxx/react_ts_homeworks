@@ -30,7 +30,7 @@ const PostsAndComments = () => {
     },[allPosts,allComments])
     return (
         <div>
-            {postsOfComments && postsOfComments.map((post:IPost) =><PostAndComment key={post.id} post={post}/>)}
+            {postsOfComments?.length && postsOfComments.map((post:IPost) =><PostAndComment key={post.id} post={post}/>)}
         </div>
     );
 };
