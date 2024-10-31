@@ -10,9 +10,11 @@ const PostsAndComments = () => {
     const {commentsPart:{allComments,getAllComments},postsPart:{allPosts,getAllPosts}} = useStore();
     const [postsOfComments, setPostsOfComments] = useState<IPost[] | null>(null)
     useEffect(() => {
-        if(!allComments.length && !allPosts.length){
-            jsonPlaceholderService.posts.getAllPosts().then((response:IPost[]) =>getAllPosts(response));
+        if(!allComments.length){
             jsonPlaceholderService.comments.getAllComments().then((response:IComment[]) =>getAllComments(response))
+        }
+        if(!allPosts.length){
+            jsonPlaceholderService.posts.getAllPosts().then((response:IPost[]) =>getAllPosts(response));
         }
     }, [getAllComments,getAllPosts,allComments.length,allPosts.length]);
     useEffect(() => {
@@ -21,7 +23,7 @@ const PostsAndComments = () => {
 
             return allPosts.map((post:IPost) =>
                 ({...post,commentsOfPost:allComments.filter((comment:IComment) => comment.postId === post.id)}))
-            
+
 
     }
     setPostsOfComments(addCommentsToPosts(allComments,allPosts))
