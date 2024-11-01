@@ -7,3 +7,4 @@ export const endPoints = {
     genres:'/genre/movie/list',
     movies:'/discover/movie'
 }
+export const imgPath = 'https://image.tmdb.org/t/p/w500';
