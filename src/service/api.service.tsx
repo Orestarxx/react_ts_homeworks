@@ -35,11 +35,11 @@ export const movieService = {
         getMoviesWithGenre: async (genre:string,page:number):Promise<IDataMovie & {results:IMovie[]}> =>{
           const {data} = await  axiosInstance.get<IDataMovie & {results:IMovie[]}>(endPoints.movies,{
                 params:{
-                    page:page,
                 with_genres:genre,
+                    page:page
                 }
             })
-            return data
+            return  {...data,page:page}
         }
     }
 }

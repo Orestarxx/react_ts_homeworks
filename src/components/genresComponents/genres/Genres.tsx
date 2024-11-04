@@ -4,7 +4,6 @@ import {IGenre, IGenreData} from "../../../models/IGenre";
 import Genre from "../genre/Genre";
 import './genresStyle.css'
 import {colorGenre} from "../../../helpers/colorGenre";
-import {useSearchParams} from "react-router-dom";
 
 
 const Genres = () => {

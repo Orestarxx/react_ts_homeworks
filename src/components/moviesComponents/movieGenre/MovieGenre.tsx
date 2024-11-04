@@ -16,8 +16,11 @@ const MovieGenre = () => {
     console.log(id);
     useEffect(() => {
         const page = query.get('page');
-         page && movieService.genres.getMoviesWithGenre(id.toString())
+        if(page && id){
+          movieService.genres.getMoviesWithGenre(id.toString(),+page)
             .then((movies:IDataMovie & {results:IMovie[]}) =>setMovies(movies))
+        }
+
     }, [id,query]);
     return (
         <div>

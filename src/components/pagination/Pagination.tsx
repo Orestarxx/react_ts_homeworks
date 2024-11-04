@@ -10,6 +10,7 @@ const Pagination = () => {
         const page = query.get('page') || '1';
         if(page){
          let pageToNumber = +page;
+            console.log(pageToNumber);
             pageToNumber--;
             setQuery({page:pageToNumber.toString()})
         }
@@ -19,6 +20,7 @@ const Pagination = () => {
         if(page){
             let pageToNumber = +page;
             pageToNumber++;
+            console.log(pageToNumber);
             setQuery({page:pageToNumber.toString()})
         }
     }
