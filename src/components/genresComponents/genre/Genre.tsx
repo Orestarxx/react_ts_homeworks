@@ -12,7 +12,7 @@ const Genre:FC<GenreProps> = ({genre:{id,name},colorGenre}) => {
         <li className={'genre'} onClick={() =>{
             colorGenre(name)
         }}>
-           <Link state={{id:id,name:name}} to={'/movie/'+name}>{name}</Link>
+           <Link state={{id:id,name:name}} to={'/movie/'+id}>{name}</Link>
         </li>
     );
 };
