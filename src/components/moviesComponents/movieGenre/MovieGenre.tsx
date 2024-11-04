@@ -2,20 +2,21 @@ import React, {useEffect, useState} from 'react';
 import {movieService} from "../../../service/api.service";
 import {IDataMovie} from "../../../models/IDataMovie";
 import {IMovie} from "../../../models/IMovie";
-import {useLocation,} from "react-router-dom";
+import {useLocation, useParams,} from "react-router-dom";
 import Movie from "../movie/Movie";
 import './moviesStyle.css'
 
 const MovieGenre = () => {
     const [movies, setMovies] = useState<IDataMovie & {results:IMovie[]} | null>(null);
     const {state:{id}} = useLocation()
+    const {genre} = useParams()
+    console.log(genre);
     useEffect(() => {
         movieService.genres.getMoviesWithGenre(id.toString()).then((movies:IDataMovie & {results:IMovie[]}) =>setMovies(movies))
     }, [id]);
-    console.log(movies,id);
     return (
         <div id={'moviesHolder'}>
-            {movies ? movies.results.map((movie)=><Movie key={movie.id} movie={movie}/>) : <div>Error</div>}
+            {movies ? movies.results.map((movie)=><Movie key={movie.id} movie={movie} genre={genre}/>) : <div>Error</div>}
         </div>
     );
 };

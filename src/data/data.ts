@@ -5,6 +5,7 @@ export const options = {
 };
 export const endPoints = {
     genres:'/genre/movie/list',
-    movies:'/discover/movie'
+    movies:'/discover/movie',
+    singleUser:'/movie/'
 }
 export const imgPath = 'https://image.tmdb.org/t/p/w500';
