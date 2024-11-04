@@ -8,12 +8,10 @@ import {useSearchParams} from "react-router-dom";
 
 
 const Genres = () => {
-    const [query,setQuery] = useSearchParams({page:'1'})
-
     const [genres, setGenres] = useState<IGenre[] | null>(null);
     useEffect(() => {
-        movieService.genres.getGenres(+query).then((genres:IGenreData) =>setGenres(genres.genres));
-    }, [query]);
+        movieService.genres.getGenres().then((genres:IGenreData) =>setGenres(genres.genres));
+    }, []);
     return (
         <ul id={'genreHolder'}>
             {genres?.length && genres.map((genre:IGenre) => <Genre key={genre.id} genre={genre} colorGenre={colorGenre}/>)}

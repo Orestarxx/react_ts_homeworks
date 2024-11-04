@@ -28,18 +28,15 @@ export const movieService = {
         }
     },
     genres:{
-        getGenres: async (page:number):Promise<IGenreData> =>{
-          const {data}  = await axiosInstance.get<IGenreData>(endPoints.genres,{
-              params:{
-                  page:page
-              }
-          });
+        getGenres: async ():Promise<IGenreData> =>{
+          const {data}  = await axiosInstance.get<IGenreData>(endPoints.genres);
           return data
         },
-        getMoviesWithGenre: async (genre:string):Promise<IDataMovie & {results:IMovie[]}> =>{
+        getMoviesWithGenre: async (genre:string,page:number):Promise<IDataMovie & {results:IMovie[]}> =>{
           const {data} = await  axiosInstance.get<IDataMovie & {results:IMovie[]}>(endPoints.movies,{
                 params:{
-                with_genres:genre
+                    page:page,
+                with_genres:genre,
                 }
             })
             return data
