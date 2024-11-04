@@ -1,0 +1,8 @@
+#buttonHolder{
+    width: 98vw;
+    height: 5vh;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

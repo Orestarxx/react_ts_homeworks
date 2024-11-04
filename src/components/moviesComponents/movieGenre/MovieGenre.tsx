@@ -5,6 +5,7 @@ import {IMovie} from "../../../models/IMovie";
 import {useLocation, useParams,} from "react-router-dom";
 import Movie from "../movie/Movie";
 import './moviesStyle.css'
+import Pagination from "../../pagination/Pagination";
 
 const MovieGenre = () => {
     const [movies, setMovies] = useState<IDataMovie & {results:IMovie[]} | null>(null);
@@ -15,8 +16,12 @@ const MovieGenre = () => {
         movieService.genres.getMoviesWithGenre(id.toString()).then((movies:IDataMovie & {results:IMovie[]}) =>setMovies(movies))
     }, [id]);
     return (
-        <div id={'moviesHolder'}>
-            {movies ? movies.results.map((movie)=><Movie key={movie.id} movie={movie} genre={genre}/>) : <div>Error</div>}
+        <div>
+            <div id={'moviesHolder'}>
+                {movies ? movies.results.map((movie) => <Movie key={movie.id} movie={movie} genre={genre}/>) :
+                    <div>Error</div>}
+            </div>
+            <Pagination/>
         </div>
     );
 };
