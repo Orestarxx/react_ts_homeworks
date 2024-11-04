@@ -12,19 +12,19 @@ const MovieGenre = () => {
    const [query] = useSearchParams({page:'1'})
     const {state} = useLocation()
     const {genre} = useParams()
-    console.log(genre);
+    console.log(movies);
     useEffect(() => {
         const page = query.get('page')|| '1';
-        if(page && genre){
+        if( page &&  genre){
           movieService.genres.getMoviesWithGenre(genre.toString(),+page)
             .then((movies:IDataMovie & {results:IMovie[]}) =>setMovies(movies))
         }
 
-    }, [state.id,query]);
+    }, [state?.id ,query,genre]);
     return (
         <div>
             <div id={'moviesHolder'}>
-                {movies ? movies.results.map((movie) => <Movie key={movie.id} movie={movie} genre={state.name}/>) :
+                {movies ? movies.results.map((movie) => <Movie key={movie.id} movie={movie} genre={state}/>) :
                     <div>Error</div>}
             </div>
             <Pagination/>
