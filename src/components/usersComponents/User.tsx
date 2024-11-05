@@ -3,13 +3,11 @@ import {IUser} from "../../models/IUser";
 import {Link} from "react-router-dom";
 type UserProps = {
     user:IUser,
-    getId:(id:number) => void
+
 }
-const User:FC<UserProps> = ({user,getId}) => {
+const User:FC<UserProps> = ({user}) => {
     return (
-        <Link to={''} onClick={() =>{
-            getId(user.id)
-        }}>
+        <Link to={`/users/${user.id}`}>
             <div>{user.id}</div>
         </Link>
     );
