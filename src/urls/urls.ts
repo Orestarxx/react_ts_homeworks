@@ -1,7 +1,7 @@
 export const baseURL = 'https://jsonplaceholder.typicode.com';
 export const endPoints = {
     posts:'/posts',
-    users:'/uses',
+    users:'/users',
     comments:'/comments'
 }
 

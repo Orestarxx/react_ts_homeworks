@@ -1,10 +1,10 @@
 import React, {FC} from 'react';
 import {IUser} from "../../../models/IUser";
+
 type UserProps = {
-    user:IUser
+    user: IUser
 }
-const User:FC<UserProps> = ({user}) => {
-    //todo нормально вивести обєкт
+const User: FC<UserProps> = ({user}) => {
     return (
         <div>
             {user.username}

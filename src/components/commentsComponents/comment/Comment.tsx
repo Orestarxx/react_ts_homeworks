@@ -1,8 +1,13 @@
-import React from 'react';
+import React, {FC} from 'react';
+import {IComment} from "../../../models/IComment";
 
-const Comment = () => {
+type CommentProps = {
+    comment: IComment
+}
+const Comment: FC<CommentProps> = ({comment: {name, id}}) => {
     return (
         <div>
+            <div>{id}_{name}</div>
 
         </div>
     );
