@@ -13,7 +13,7 @@ const Posts = () => {
     }, [dispatch]);
     return (
         <div className={'mainHolder'}>
-            {posts && posts.map((post: IPost) => <Post key={post.id} post={post}/>)}
+            {posts.length && posts.map((post: IPost) => <Post key={post.id} post={post}/>)}
         </div>
     );
 };

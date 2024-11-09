@@ -17,7 +17,7 @@ const Comments = () => {
 
     return (
         <div className={'mainHolder'}>
-            {comments && comments.map((comment: IComment) => <Comment key={comment.id} comment={comment}/>)}
+            {comments.length && comments.map((comment: IComment) => <Comment key={comment.id} comment={comment}/>)}
         </div>
     );
 };

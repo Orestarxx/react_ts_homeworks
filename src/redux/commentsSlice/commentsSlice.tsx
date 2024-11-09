@@ -4,10 +4,10 @@ import {placeHolderService} from "../../services/api.jsonPlaceholder.service";
 import {postsActions} from "../postsSlice/postsSlice";
 
 type CommentsInitType = {
-    comments: IComment[] | null;
+    comments: IComment[];
 }
 const commentsInitState: CommentsInitType = {
-    comments: null
+    comments: []
 }
 const getAllComments = createAsyncThunk('commentsSlice/getAllComments', async (_, thunkAPI) => {
     try {

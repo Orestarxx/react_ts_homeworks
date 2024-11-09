@@ -4,8 +4,9 @@ import {placeHolderService} from "../../services/api.jsonPlaceholder.service";
 import {AxiosError} from "axios";
 
 type UsersInitType = {
-    users: IUser[] | null,
-    error: {} | AxiosError;
+    users: IUser[],
+    error: AxiosError | null | unknown;
+    user:IUser | null;
 
 }
 const getAllUsers = createAsyncThunk('usersSlice/getAllUsers',
@@ -17,20 +18,21 @@ const getAllUsers = createAsyncThunk('usersSlice/getAllUsers',
         } catch (e) {
             console.log(e);
             const error = e as AxiosError;
-            return thunkAPI.rejectWithValue(error);
+            return thunkAPI.rejectWithValue(error.response);
 
         }
     })
 const usersInitState: UsersInitType = {
     users: [],
-    error: {}
+    error: null,
+    user:null
 }
 export const usersSlice = createSlice({
     name: 'usersSlice',
     initialState: usersInitState,
     reducers: {
-        helloWorld: () => {
-            console.log('hello world');
+        getSingleUser: (state,action:PayloadAction<IUser>) => {
+            state.user = action.payload
         }
     },
     extraReducers: builder => builder
@@ -38,8 +40,10 @@ export const usersSlice = createSlice({
             (state, action: PayloadAction<IUser[]>) => {
                 state.users = action.payload
             })
-        .addCase(getAllUsers.rejected, (state, action) => {
-            //як його правильно типізувати??? цю ерору
+        .addCase(getAllUsers.rejected, (state, action:PayloadAction<AxiosError |unknown| number>) => {
+            console.log(action.payload);
+            state.error = action.payload
+
         })
 });
 

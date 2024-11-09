@@ -11,7 +11,7 @@ const CommentsOfPosts = () => {
     const {commentsOfPosts} = useAppSelector(state => state.postsReducer);
     let dispatch = useAppDispatch()
     useEffect(() => {
-        if (!commentsOfPosts) {
+        if (!commentsOfPosts.length) {
             dispatch(postsActions.getAllPosts())
             dispatch(commentsActions.getAllComments())
         }
@@ -19,7 +19,7 @@ const CommentsOfPosts = () => {
     }, [dispatch, commentsOfPosts]);
     return (
         <div className={'mainHolder'}>
-            {commentsOfPosts && commentsOfPosts.map((post: IPost) => <Post post={post} key={post.id}/>)}
+            {commentsOfPosts.length && commentsOfPosts.map((post: IPost) => <Post post={post} key={post.id}/>)}
         </div>
     );
 };
