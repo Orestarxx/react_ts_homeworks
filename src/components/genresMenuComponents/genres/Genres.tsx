@@ -3,6 +3,8 @@ import {useAppDispatch, useAppSelector} from "../../../redux/store";
 import {genresActions} from "../../../redux/genresSlice/genresSlice";
 import Genre from "../genre/Genre";
 import {IGenre} from "../../../modules/IGenre";
+import styles from './genresStyle.module.css'
+
 
 const Genres = () => {
     const useSelector = useAppSelector(state => state.genresReducer);
@@ -11,8 +13,12 @@ const Genres = () => {
         dispatch(genresActions.getGenres())
     }, [dispatch]);
     return (
-        <div>
-            {useSelector.genres.length && useSelector.genres.map((genre:IGenre) =><Genre key={genre.id} genre={genre}/>)}
+        <div id={styles.header}>
+            <div id={styles.genresHolder}>
+                {useSelector.genres.length && useSelector.genres.map((genre: IGenre) => <Genre key={genre.id}
+                                                                                               genre={genre}/>)}
+            </div>
+                <hr/>
         </div>
     );
 };

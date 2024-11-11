@@ -1,13 +1,13 @@
 import React, {FC} from 'react';
 import {IGenre} from "../../../modules/IGenre";
+import {Link} from "react-router-dom";
 type GenreProps = {
-    genre:IGenre
+    genre:IGenre,
+
 }
-const Genre:FC<GenreProps> = ({genre}) => {
+const Genre:FC<GenreProps> = ({genre:{id,name}}) => {
     return (
-        <div>
-            {genre.name}
-        </div>
+        <Link state={{id,name}} to={'/' + name}>{name}</Link>
     );
 };
 

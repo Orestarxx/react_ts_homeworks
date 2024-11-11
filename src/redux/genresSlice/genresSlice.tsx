@@ -13,7 +13,8 @@ const genresInitState:GenresStateType = {
 export const getGenres = createAsyncThunk('genresSlice/getGenres',async (_,thunkAPI) =>{
     try {
         const genres:IGenre[] = await movieService.genres.getGenres()
-       return  thunkAPI.fulfillWithValue(genres);
+        console.log(genres);
+        return  thunkAPI.fulfillWithValue(genres);
     }catch (e) {
         return  thunkAPI.rejectWithValue(e as AxiosError);
     }

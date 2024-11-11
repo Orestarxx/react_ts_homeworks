@@ -1,0 +1,9 @@
+#moviesHolder{
+    width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 5vh 10vw 0 10vw;
+}

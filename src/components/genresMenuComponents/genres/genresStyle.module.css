@@ -1,0 +1,9 @@
+#genresHolder{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+#header{
+    width: 98vw;
+    height: 50px;
+}
